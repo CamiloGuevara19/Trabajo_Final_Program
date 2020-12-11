@@ -33,16 +33,26 @@ public class Level {
 		levelMap =new MapZone(0,0,app);
 		player1= new Player(0,0,levelMap);
 		//esti no va aqui
-		enemies[0]=new Enemy(7,7, levelMap);
-		enemies[1]=new Enemy(10,4, levelMap);
-		enemies[2]=new Enemy(4,10, levelMap);
-		enemies[3]=new Enemy(4,2, levelMap);
+		enemies[0]=new Enemy(7,7, levelMap, app);
+		enemies[1]=new Enemy(10,4, levelMap, app);
+		enemies[2]=new Enemy(4,10, levelMap, app);
+		enemies[3]=new Enemy(4,2, levelMap, app);
 	}
 	
 	
 	public void pintarNivel(PApplet app) {
 		switch(numLevel) {
 		case 1:
+			
+			
+			for (int i = 0; i < enemies.length; i++) {
+				enemies[i].disparos();
+				//enemies[i].mover((int) random(1,4));
+				enemies[i].mover(( int )(Math.random()*4));
+			}
+			
+			
+			
 			
 			levelMap.pintar(app);
 			player1.pintar(app);
@@ -141,6 +151,12 @@ public class Level {
 		
 	}//end pintarNivel
 	
+	private int random(int i, int j) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 	public boolean getVictory() {
 		return victory;
 	}	
